@@ -92,6 +92,7 @@ public class FunctionLoader {
 		 * 取得FunctionXMLConfig.is使用
 		 * */
 		FunctionXMLConfig.setXmlInputStreamInFile(FILE_NAME);
+		//FunctionXMLConfig.setXmlInputStreamInAsserts(context, "IKExpression.cfg.xml");
 		
 		xml_source_input_stream = FunctionXMLConfig.is;
 		Document doc = builder.parse(xml_source_input_stream);
