@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<function-configuration>
+	<!-- 系统函数默认配置 -->
+	<bean class="com.larrywei.expression.function.SystemFunctions">
+		<function name="CONTAINS" method="contains">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="STARTSWITH" method="startsWith">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="ENDSWITH" method="endsWith">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="CALCDATE" method="calcDate">
+			<parameter-type>java.util.Date</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+		</function>
+		<function name="SYSDATE" method="sysDate" />
+		<function name="DAYEQUALS" method="dayEquals">
+			<parameter-type>java.util.Date</parameter-type>
+			<parameter-type>java.util.Date</parameter-type>
+		</function>
+	</bean>
+	
+	<!-- 用户函数配置  请在这里定制您自己的函数	
+
+	<bean class="com.larrywei.expression.test.TestFunctions">
+		<function name="问好" method="sayHello">
+			<parameter-type>double</parameter-type>
+		</function>
+	</bean>
+	-->
+
+
+</function-configuration>
