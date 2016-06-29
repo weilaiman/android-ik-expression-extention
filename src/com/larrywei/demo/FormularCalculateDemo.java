@@ -1,4 +1,4 @@
-package com.larrywei.fomula;
+package com.larrywei.demo;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -12,22 +12,27 @@ import android.util.Log;
 import com.larrywei.expression.ExpressionEvaluator;
 import com.larrywei.expression.datameta.Variable;
 import com.larrywei.expression.function.CommonFunctions;
-import com.yongche.formula.interfaces.ICalculate;
 
-public class FormularCalculate implements ICalculate{
-	private final int VER = 1;
-
-	@Override
-	public int getVersion() {
-		return VER;
-	}
+public class FormularCalculateDemo {
 	
+	/**
+	 * 测试用例
+	 * 计算公式
+	 * C=1
+	 * B=1
+	 * A=B+C;
+	 * 并打印出结果
+	 * */
+	public static void testDemo() {
+		String expression = "C=1\nB=1\nA=B+C\n";
+		String result = calculateFormulas(expression);
+		Log.d("Info", result);
+	}
 	/**
 	 * 计算所有公式,并返回所有变量的Json字符串
 	 * @param expression	单价+公式字符串
 	 * */
-	@Override
-	public String calculateFormulas(String expression) {
+	public static String calculateFormulas(String expression) {
 		try {
 			String[] expressions = expression.split("\n");
 			LinkedList<Variable> variableList = new LinkedList<Variable>();
@@ -59,7 +64,7 @@ public class FormularCalculate implements ICalculate{
 	 * @param	expression	表达式语句
 	 * @param	varList		变量表
 	 * */
-	private Variable calculateSingleLineFormula(String expression, LinkedList<Variable> varList) {
+	private static Variable calculateSingleLineFormula(String expression, LinkedList<Variable> varList) {
 		if (!expression.contains("=")) {
 			return null;
 		}
@@ -74,7 +79,7 @@ public class FormularCalculate implements ICalculate{
 	 * 将函数List中存在的函数名替换为$+函数名
 	 * @param	data	表达式语句
 	 * */
-	private String preReplace(String data) {
+	private static String preReplace(String data) {
 		ArrayList<String> functionNameList = new ArrayList<String>();
 		Method[] declaredMethods = CommonFunctions.class.getDeclaredMethods();
 		for (int i = 0; declaredMethods != null && i < declaredMethods.length; i++) {
@@ -92,7 +97,7 @@ public class FormularCalculate implements ICalculate{
 	 * @param list	变量表
 	 * @return true 表示有替换，false无替换
 	 * */
-	private boolean replaceExistedVarInList(Variable var, LinkedList<Variable> list) {
+	private static boolean replaceExistedVarInList(Variable var, LinkedList<Variable> list) {
 		for (int i = 0; i < list.size(); i++) {
 			if (var.getVariableName().equals(list.get(i).getVariableName())) {
 				list.remove(i);
